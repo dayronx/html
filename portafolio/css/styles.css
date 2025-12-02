@@ -1,0 +1,249 @@
+/* ---------------------------------- */
+/* 1. Estilos Globales y Fondo*/
+/* ---------------------------------- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+}
+
+
+
+
+/* Creamos el fondo desenfocado con un pseudo-elemento para que el contenido no se difumine */
+body::before {
+    content: '';
+    position: fixed; /* Ocupa toda la ventana de forma fija */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Aplicamos la imagen de fondo y el desenfoque aquí */
+    background-image: url('../imagenes/fondo.jpg'); 
+    background-size: cover;
+    background-position: center;
+    
+
+    filter: blur(28px);
+    -webkit-filter: blur(28px);
+    
+    z-index: -1;
+}
+
+/* ---------------------------------- */
+/* 2. Contenedor Principal y Estructura */
+/* ---------------------------------- */
+.perfil-container {
+    display: flex;
+    align-items: center; 
+    width: 800px; 
+    max-width: 90%;
+    position: relative; /* Para que esté sobre el fondo */
+    color: #fff; 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); 
+    
+    /* Centrado en la vista */
+    margin: auto; 
+    z-index: 1; 
+}
+
+.col-izquierda, .col-derecha {
+    padding: 20px;
+}
+
+.col-izquierda {
+    flex: 1; 
+    text-align: center;
+}
+
+.col-derecha {
+    flex: 2; 
+    padding-left: 50px;
+    text-align: right; /* Alinea texto y botones a la derecha */
+}
+
+/* ---------------------------------- */
+/* 3. Foto de Perfil y Redes Sociales */
+/* ---------------------------------- */
+.foto-perfil-marco {
+    border: 3px solid rgba(255, 255, 255, 0.5); 
+    border-radius: 50%; 
+    display: inline-block;
+    overflow: hidden; 
+    width: 500px; 
+    height: 500px;
+}
+
+.foto-perfil {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+.iconos-sociales {
+    margin-top: 20px;
+}
+
+.iconos-sociales a {
+    color: #fff;
+    font-size: 24px;
+    margin: 0 10px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.iconos-sociales a:hover {
+    opacity: 1;
+}
+
+/* ---------------------------------- */
+/* 4. Títulos y Botones */
+/* ---------------------------------- */
+.nombre {
+    margin: 0;
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.experiencia {
+    margin: 5px 0 30px 0;
+    font-size: 0.9em;
+    opacity: 0.8;
+    letter-spacing: 3px;
+    font-weight: 300;
+}
+
+.menu-perfil {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px; 
+    margin-top: 20px;
+}
+
+.boton-perfil {
+    display: block;
+    width: 300px; 
+    align-self: flex-end; /* Asegura la alineación a la derecha */
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    border: 2px solid #fff; 
+    background-color: rgba(68, 85, 59, 0.7); 
+    border-radius: 5px;
+    font-size: 1em;
+    letter-spacing: 1.5px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.boton-perfil:hover {
+    background-color: rgba(68, 85, 59, 1); 
+    border-color: #f0f0f0;
+}
+
+/* ---------------------------------- */
+/* 5. Adaptación a Móviles */
+/* ---------------------------------- */
+@media (max-width: 768px) {
+    .perfil-container {
+        flex-direction: column; 
+        text-align: center;
+        width: 95%;
+        padding: 20px 0;
+    }
+    
+    .col-derecha {
+        padding-left: 20px;
+        margin-top: 30px;
+        text-align: center; 
+    }
+
+    .boton-perfil {
+        align-self: center; 
+        width: 80%;
+    }
+}
+
+
+/* ---------------------------------- */
+/* 6. Estilos del Formulario de Contacto */
+/* ---------------------------------- */
+
+.formulario-container {
+    /* Define el ancho del formulario, similar al ancho de los botones */
+    width: 600px;
+    max-width: 90%;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo muy claro sobre el blur */
+    border-radius: 8px;
+    color: black;
+    text-align: left;
+}
+
+.formulario-container h2 {
+    font-size: 2em;
+    margin-top: 0;
+    text-align: center;
+}
+
+.formulario-container p {
+    text-align: center;
+    opacity: 0.8;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block; /* La etiqueta ocupa toda la línea */
+    margin-bottom: 8px;
+    font-size: 0.9em;
+    opacity: 0.9;
+    letter-spacing: 1px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Borde blanco sutil */
+    background-color: rgba(0, 0, 0, 0.2); /* Fondo semi-transparente oscuro */
+    color: #fff;
+    border-radius: 5px;
+    box-sizing: border-box; /* Incluye padding y border en el ancho */
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #f0f0f0; /* Borde más brillante al enfocar */
+    outline: none;
+}
+
+/* Reutilizamos el estilo de tus botones existentes */
+.submit-button {
+    /* Clases ya definidas en el botón: .boton-perfil se encarga del estilo */
+    width: 100%; /* El botón de enviar ocupa todo el ancho */
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Adaptación para móviles del formulario */
+@media (max-width: 650px) {
+    .formulario-container {
+        padding: 20px;
+        margin: 20px auto;
+    }
+}
